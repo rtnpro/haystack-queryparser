@@ -70,7 +70,7 @@ def handle_normal_query(sq,q,current):
     return sq,q,current
 
 def handle_quoted_query(sq,q,current):
-    mat = re.match(Patern_Quoted_Text,q)
+    mat = re.search(Patern_Quoted_Text,q)
     query = mat.group(1)
     #it seams that haystack exact only works if there is a space in the query.So adding a space
     if not re.search(r'\s',query):
