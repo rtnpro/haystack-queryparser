@@ -1,13 +1,15 @@
 import re
 import sys
 from haystack.query import SearchQuerySet,SQ
-from mysite.settings import *
+from django.conf import settings
 
 Patern_Field_Query = re.compile(r"^(\w+):(\w+)\s*")
 Patern_Field_Exact_Query = re.compile(r"^(\w+):\"(.+)\"\s*")
 Patern_Normal_Query = re.compile(r"^(\w+)\s*")             
 Patern_Operator = re.compile(r"^(AND|OR|NOT)\s*")
 Patern_Quoted_Text = re.compile(r"^\"(.+)\"\s*")
+
+HAYSTACK_DEFAULT_OPERATOR = getattr(settings,'HAYSTACK_DEFAULT_OPERATOR','AND')
 
 class NoMatchingBracketsFound(Exception):
     def __init__(self,value=''):
