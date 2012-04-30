@@ -16,7 +16,7 @@ class NoMatchingBracketsFound(Exception):
     def __str__(self):
         return "Matching brackets were not found: "+self.value
 
-class UnhandledException(object):
+class UnhandledException(Exception):
     def __init__(self,value=''):
         self.value = value
     def __str__(self):
