@@ -1,18 +1,16 @@
 """
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
+Testing common search query syntax.
 """
 
-from django.test import TestCase
+
+from unittest import *
 from haystack.query import SQ
 from getSQ import parse
 
 class SimpleTest(TestCase):
     def setUp(self):
         self.testcase = {
-          #  "note":str(SQ(content="note")),
+            "note":str(SQ(content="note")),
             '"need note"':str(SQ(content__exact="need note")),
             "author:admin":str(SQ(author="admin")),
             "author:admin notes":str(SQ(author="admin")&SQ(content="notes")),
@@ -26,7 +24,10 @@ class SimpleTest(TestCase):
     def test_parse(self):
         for case in self.testcase.keys():
             self.assertEqual(str(parse(case)),self.testcase[case])
-        
 
+
+def main():
+    suite = TestLoader().loadTestsFromTestCase(SimpleTest)
+    TextTestRunner(verbosity=2).run(suite)
 
 
