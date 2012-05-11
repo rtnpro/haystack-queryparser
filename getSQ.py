@@ -53,7 +53,6 @@ def handle_brackets(sq,q,current=HAYSTACK_DEFAULT_OPERATOR):
         i+=1
     if not no_brackets:
         sq.add((parse(q[1:i-1])),current)
-        #print sq, q[i+1:]
     else:
         raise NoMatchingBracketsFound(q)
     return sq, q[i:], HAYSTACK_DEFAULT_OPERATOR
@@ -88,7 +87,6 @@ def parse(q):
 
         while q:
             q=q.lstrip()
-            print sq,"query ",q
             if re.search(Patern_Field_Query,q):
                 sq, q, current = handle_field_query(sq,q,current)
             elif re.search(Patern_Field_Exact_Query,q):
