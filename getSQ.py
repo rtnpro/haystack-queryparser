@@ -1,6 +1,6 @@
 import re
 import sys
-from haystack.query import SearchQuerySet,SQ
+from haystack.query import SQ
 from django.conf import settings
 
 Patern_Field_Query = re.compile(r"^(\w+):(\w+)\s*")
@@ -102,9 +102,3 @@ def parse(q):
     except:
         raise UnhandledException(sys.exc_info()[0])
     return sq
-
-
-if __name__ == '__main__':
-    parse(raw_input("Enter: "))
-    print sq
-            
