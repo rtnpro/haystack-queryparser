@@ -3,11 +3,11 @@ import sys
 from haystack.query import SQ
 from django.conf import settings
 
-Patern_Field_Query = re.compile(r"^(\w+):(\w+)\s*")
-Patern_Field_Exact_Query = re.compile(r"^(\w+):\"(.+)\"\s*")
-Patern_Normal_Query = re.compile(r"^(\w+)\s*")             
-Patern_Operator = re.compile(r"^(AND|OR|NOT)\s*")
-Patern_Quoted_Text = re.compile(r"^\"(.+)\"\s*")
+Patern_Field_Query = re.compile(r"^(\w+):(\w+)\s*",re.U)
+Patern_Field_Exact_Query = re.compile(r"^(\w+):\"(.+)\"\s*",re.U)
+Patern_Normal_Query = re.compile(r"^(\w+)\s*",re.U)             
+Patern_Operator = re.compile(r"^(AND|OR|NOT)\s*",re.U)
+Patern_Quoted_Text = re.compile(r"^\"(.+)\"\s*",re.U)
 
 HAYSTACK_DEFAULT_OPERATOR = getattr(settings,'HAYSTACK_DEFAULT_OPERATOR','AND')
 

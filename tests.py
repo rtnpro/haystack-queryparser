@@ -15,7 +15,7 @@ class SimpleTest(TestCase):
             "author:admin":str(SQ(author="admin")),
             "author:admin notes":str(SQ(author="admin")&SQ(content="notes")),
             'title:"need note"':str(SQ(title__exact="need note")),
-            "need note":str(SQ(content="need")&SQ(content="note")),
+            "need note ":str(SQ(content="need")&SQ(content="note")),
             "need note NOT used":str(SQ(content="need")&SQ(content="note") & ~SQ(content="used")),
             "(a AND b) OR (c AND d)":str((SQ(content="a")&SQ(content="b"))|(SQ(content="c")&SQ(content="d"))),
             "a AND b OR (c AND d)":str(SQ(content="a")&SQ(content="b")|(SQ(content="c")&SQ(content="d"))),
