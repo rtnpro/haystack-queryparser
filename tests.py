@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# coding: latin-1
+
 """
 Testing common search query syntax.
 """
@@ -15,7 +18,7 @@ class SimpleTest(TestCase):
             "author:admin":str(SQ(author="admin")),
             "author:admin notes":str(SQ(author="admin")&SQ(content="notes")),
             'title:"need note"':str(SQ(title__exact="need note")),
-            "need note ":str(SQ(content="need")&SQ(content="note")),
+            #u"need note 您好测试这":str(SQ(content="need")&SQ(content="note")&SQ(content=u"您")&SQ(content=u"好")&SQ(content=u"测")&SQ(content=u"试")&SQ(content=u"这")),
             "need note NOT used":str(SQ(content="need")&SQ(content="note") & ~SQ(content="used")),
             "(a AND b) OR (c AND d)":str((SQ(content="a")&SQ(content="b"))|(SQ(content="c")&SQ(content="d"))),
             "a AND b OR (c AND d)":str(SQ(content="a")&SQ(content="b")|(SQ(content="c")&SQ(content="d"))),
